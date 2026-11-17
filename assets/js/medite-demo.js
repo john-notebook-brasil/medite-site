@@ -400,22 +400,22 @@ function typeInto(text, ms) {
   return function tick() { if (!st.open || st.tab !== 2) return; i++; st.noteText = text.slice(0, i); var ta = pageHost.querySelector('#f2-notes-editor'); if (ta) ta.value = st.noteText; updateNoteRow(); if (i < n) tourTimeout(tick, every); };
 }
 var SCENES = [
-  { label: 'Área de trabalho', dur: 6000, cap: '<strong>Área de trabalho.</strong> O Medite fica discretamente no canto da tela, sobre o Windows, enquanto você trabalha.',
+  { label: 'Área de trabalho', dur: 3000, cap: '<strong>Área de trabalho.</strong> O Medite fica discretamente no canto da tela, sobre o Windows, enquanto você trabalha.',
     acts: [[0, function () { reset(false); }]] },
-  { label: 'Avatar', dur: 6500, cap: '<strong>O avatar.</strong> Um círculo de 96 px com moldura dourada e um personagem bíblico. Quando chega um novo versículo, ele acena.',
-    acts: [[0, function () { reset(false); manualCam = pad(ORB, viewport.clientWidth < 700 ? 150 : 210); applyCamera(); spotOn(ORB); }], [1300, function () { verseArrived(); }]] },
-  { label: 'Meditação', dur: 7000, cap: '<strong>Abrir a meditação.</strong> Um clique no avatar abre a página com o versículo, a referência e as ações Anterior, Próximo, Copiar e WhatsApp.',
-    acts: [[0, function () { reset(false); }], [700, function () { openPage(); }], [4200, function () { step(1); }], [5600, function () { step(-1); }]] },
-  { label: 'Bíblia', dur: 8500, cap: '<strong>Bíblia.</strong> Na gaveta roxa, escolha livro, capítulo e versículo e leia na página principal. O botão dourado “Meditação” volta ao versículo do dia.',
-    acts: [[0, function () { reset(true); }], [600, function () { selectTab(1); }], [2600, function () { bibleChange('book', 'Salmos'); }], [4000, function () { bibleChange('chapter', '27'); }], [5600, function () { var v = bibleSelected(); if (v) { st.library = v; renderPage(); } }]] },
-  { label: 'Ouvir', dur: 6500, cap: '<strong>Ouvir.</strong> O versículo é lido em voz alta com a voz instalada no Windows, sem internet. Toque em “Ouvir versículo” para escutar com a voz do seu dispositivo.',
+  { label: 'Avatar', dur: 3500, cap: '<strong>O avatar.</strong> Um círculo de 96 px com moldura dourada e um personagem bíblico. Quando chega um novo versículo, ele acena.',
+    acts: [[0, function () { reset(false); manualCam = pad(ORB, viewport.clientWidth < 700 ? 150 : 210); applyCamera(); spotOn(ORB); }], [550, function () { verseArrived(); }]] },
+  { label: 'Meditação', dur: 5000, cap: '<strong>Abrir a meditação.</strong> Um clique no avatar abre a página com o versículo, a referência e as ações Anterior, Próximo, Copiar e WhatsApp.',
+    acts: [[0, function () { reset(false); }], [450, function () { openPage(); }], [3000, function () { step(1); }], [4100, function () { step(-1); }]] },
+  { label: 'Bíblia', dur: 6500, cap: '<strong>Bíblia.</strong> Na gaveta roxa, escolha livro, capítulo e versículo e leia na página principal. O botão dourado “Meditação” volta ao versículo do dia.',
+    acts: [[0, function () { reset(true); }], [600, function () { selectTab(1); }], [1900, function () { bibleChange('book', 'Salmos'); }], [3100, function () { bibleChange('chapter', '27'); }], [4500, function () { var v = bibleSelected(); if (v) { st.library = v; renderPage(); } }]] },
+  { label: 'Ouvir', dur: 4500, cap: '<strong>Ouvir.</strong> O versículo é lido em voz alta com a voz instalada no Windows, sem internet. Toque em “Ouvir versículo” para escutar com a voz do seu dispositivo.',
     acts: [[0, function () { reset(true); }], [600, function () { selectTab(0); }]] },
-  { label: 'Anotações', dur: 8000, cap: '<strong>Anotações.</strong> Registre sua reflexão sobre o versículo; ela fica somente no seu computador. (Texto fictício de demonstração.)',
-    acts: [[0, function () { reset(true); }], [600, function () { selectTab(2); }], [1500, function () { typeInto('Coragem para hoje: Deus está comigo em cada tarefa.', 2600)(); }], [5200, function () { saveNote(); }]] },
-  { label: 'Ajustes', dur: 6500, cap: '<strong>Ajustes.</strong> Frequência dos lembretes, pausa, período de silêncio e idioma de leitura. Os lembretes automáticos ainda estão em validação.',
+  { label: 'Anotações', dur: 6000, cap: '<strong>Anotações.</strong> Registre sua reflexão sobre o versículo; ela fica somente no seu computador. (Texto fictício de demonstração.)',
+    acts: [[0, function () { reset(true); }], [600, function () { selectTab(2); }], [1000, function () { typeInto('Coragem para hoje: Deus está comigo em cada tarefa.', 2200)(); }], [4200, function () { saveNote(); }]] },
+  { label: 'Ajustes', dur: 4500, cap: '<strong>Ajustes.</strong> Frequência dos lembretes, pausa, período de silêncio e idioma de leitura. Os lembretes automáticos ainda estão em validação.',
     acts: [[0, function () { reset(true); }], [600, function () { selectTab(3); }]] },
-  { label: 'Encerramento', dur: 6000, cap: '<strong>Medite.</strong> Fechou, voltou ao trabalho: o avatar continua ali, pronto para o próximo momento com Deus.',
-    acts: [[0, function () { reset(true); }], [900, function () { close(); }], [1600, function () { manualCam = pad(ORB, viewport.clientWidth < 700 ? 150 : 260); applyCamera(); spotOn(ORB); }]] }
+  { label: 'Encerramento', dur: 4000, cap: '<strong>Medite.</strong> Fechou, voltou ao trabalho: o avatar continua ali, pronto para o próximo momento com Deus.',
+    acts: [[0, function () { reset(true); }], [900, function () { close(); }], [1200, function () { manualCam = pad(ORB, viewport.clientWidth < 700 ? 150 : 260); applyCamera(); spotOn(ORB); }]] }
 ];
 var TOTAL = SCENES.reduce(function (a, s) { return a + s.dur; }, 0);
 var tour = { i: 0, t: 0, playing: false, done: [], last: 0, pending: [] };
@@ -478,9 +478,33 @@ $('#btnFull').addEventListener('click', function () {
 });
 document.addEventListener('fullscreenchange', function () { setTimeout(autoCamera, 60); });
 
-/* Início: área de trabalho com o avatar, sem reprodução automática. */
-renderCircle(); autoCamera(); tour.last = performance.now(); runDueInit();
-function runDueInit() { tour.internal = true; SCENES[0].acts[0][1](); tour.done = [true]; tour.internal = false; ui(); }
+/* Inicia automaticamente ao entrar na tela, já mostrando o zoom no avatar.
+ * Sem som automático e respeitando a preferência de movimento reduzido. */
+renderCircle(); autoCamera(); tour.last = performance.now(); go(1, false);
+var tourAutoStarted = false;
+function startTourInView() {
+  if (tourAutoStarted || reduced.matches || document.hidden || !$('#panel-repro') || $('#panel-repro').hidden) return;
+  tourAutoStarted = true;
+  go(1, true);
+  tour.started = true; tour.playing = true; tour.last = performance.now(); ui();
+}
+if ('IntersectionObserver' in window) {
+  var tourObserver = new IntersectionObserver(function(entries) {
+    if (entries.some(function(e){ return e.isIntersecting && e.intersectionRatio >= 0.3; })) {
+      startTourInView();
+      if (tourAutoStarted) tourObserver.disconnect();
+    }
+  }, {threshold:[0,0.3,0.6]});
+  tourObserver.observe(player);
+} else {
+  window.addEventListener('scroll', function onScroll(){
+    var r = player.getBoundingClientRect();
+    if (r.top < innerHeight * .75 && r.bottom > innerHeight * .25) {
+      startTourInView();
+      if (tourAutoStarted) window.removeEventListener('scroll',onScroll);
+    }
+  }, {passive:true});
+}
 requestAnimationFrame(frame);
 window.MediteDemo = { state: st, go: go, scenes: SCENES };
 })();
