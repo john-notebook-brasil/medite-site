@@ -1,7 +1,7 @@
 /* Moldura da demonstração (site). Os elementos do Medite usam exclusivamente medite-f2.css (código real).
  * Tela lógica 1536 × 864 = monitor 1920 × 1080 com escala de 125% do Windows. */
-.player{max-width:1180px;margin:0 auto}
-.screen-frame{background:#1b1d22;border-radius:22px;padding:12px;box-shadow:0 40px 80px -40px rgba(20,16,10,.55),0 0 0 1px rgba(0,0,0,.08)}
+.player{max-width:890px;margin:0 auto}
+.screen-frame{background:#1b1d22;border-radius:18px;padding:9px;box-shadow:0 40px 80px -40px rgba(20,16,10,.55),0 0 0 1px rgba(0,0,0,.08)}
 .screen-viewport{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:12px;background:#9fb4c7;outline:none}
 .screen-viewport:focus-visible{box-shadow:0 0 0 3px #246dd8}
 .win-screen{position:absolute;left:0;top:0;width:1536px;height:864px;transform-origin:0 0;overflow:hidden;
@@ -38,37 +38,37 @@
 .spot.on{opacity:1}
 @media (prefers-reduced-motion:reduce){.win-screen{transition:none}.spot{transition:none}}
 
-.caption{min-height:3em;margin:12px 6px 2px;color:#e8e3d6;font-size:15px;line-height:1.5;text-align:center}
+.caption{min-height:2.3em;margin:7px 5px 1px;color:#e8e3d6;font-size:13px;line-height:1.5;text-align:center}
 .caption strong{color:#f2d68c;font-weight:700}
 
 /* Controles */
-.controls{margin-top:14px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:12px 14px;box-shadow:var(--shadow)}
-.ctl-row{display:flex;align-items:center;gap:8px}
-.ctl{width:44px;height:44px;flex:0 0 auto;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line);background:var(--bg);cursor:pointer;color:var(--ink)}
-.ctl svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.controls{margin-top:8px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:8px 10px;box-shadow:var(--shadow)}
+.ctl-row{display:flex;align-items:center;gap:6px}
+.ctl{width:34px;height:34px;flex:0 0 auto;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line);background:var(--bg);cursor:pointer;color:var(--ink)}
+.ctl svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
 .ctl:hover{border-color:rgba(15,74,60,.4)}
-.ctl-main{width:52px;height:52px;background:var(--green);color:#fff;border-color:var(--green)}
+.ctl-main{width:40px;height:40px;background:var(--green);color:#fff;border-color:var(--green)}
 .ctl-main svg{fill:currentColor;stroke:none}
 .ctl-main .ico-pause{display:none}
 .player.playing .ctl-main .ico-play{display:none}
 .player.playing .ctl-main .ico-pause{display:block}
 .progress{flex:1;height:6px;border-radius:6px;background:#e8e3d8;overflow:hidden;min-width:40px}
 .progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold3),var(--gold2));border-radius:6px}
-.ctl-time{font-size:13px;color:var(--mute);white-space:nowrap;font-variant-numeric:tabular-nums}
-.chapters{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.chap{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:7px 13px;font:600 13px Figtree,sans-serif;color:var(--ink2);cursor:pointer}
+.ctl-time{font-size:11px;color:var(--mute);white-space:nowrap;font-variant-numeric:tabular-nums}
+.chapters{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}
+.chap{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:5px 9px;font:600 11px Figtree,sans-serif;color:var(--ink2);cursor:pointer}
 .chap[aria-current="step"]{background:var(--green);border-color:var(--green);color:#fff}
 .chap:hover{border-color:rgba(15,74,60,.4)}
-.hint{margin:10px 2px 0;font-size:13px;color:var(--mute)}
+.hint{margin:7px 2px 0;font-size:11px;color:var(--mute)}
 @media (max-width:640px){
  .screen-frame{padding:6px;border-radius:14px}
  .screen-viewport{aspect-ratio:4/5}
  .ctl-time{display:none}
- .ctl{width:40px;height:40px}
- .caption{font-size:14px}
+ .ctl{width:34px;height:34px}
+ .caption{font-size:12px}
 }
 
 /* Tela cheia */
 .player:fullscreen{background:#111;max-width:none;padding:16px;display:flex;flex-direction:column;justify-content:center;overflow:auto}
 .player:fullscreen .screen-frame{max-width:min(100%,calc((100vh - 230px) * 16 / 9));margin:0 auto;width:100%}
-.player:fullscreen .controls{max-width:1180px;margin:12px auto 0;width:100%}
+.player:fullscreen .controls{max-width:890px;margin:12px auto 0;width:100%}
