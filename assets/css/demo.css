@@ -1,0 +1,74 @@
+/* Moldura da demonstração (site). Os elementos do Medite usam exclusivamente medite-f2.css (código real).
+ * Tela lógica 1536 × 864 = monitor 1920 × 1080 com escala de 125% do Windows. */
+.player{max-width:1180px;margin:0 auto}
+.screen-frame{background:#1b1d22;border-radius:22px;padding:12px;box-shadow:0 40px 80px -40px rgba(20,16,10,.55),0 0 0 1px rgba(0,0,0,.08)}
+.screen-viewport{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:12px;background:#9fb4c7;outline:none}
+.screen-viewport:focus-visible{box-shadow:0 0 0 3px #246dd8}
+.win-screen{position:absolute;left:0;top:0;width:1536px;height:864px;transform-origin:0 0;overflow:hidden;
+ font:14px "Segoe UI",system-ui,sans-serif;color:#1c1b19;transition:transform .9s cubic-bezier(.3,.1,.2,1)}
+.win-wallpaper{position:absolute;inset:0;background:
+ radial-gradient(900px 600px at 70% 30%,rgba(255,255,255,.55),transparent 60%),
+ radial-gradient(1200px 800px at 10% 90%,#7d9cb8 0%,transparent 60%),
+ linear-gradient(135deg,#c9d8e4 0%,#a9bfd2 45%,#8aa6c0 100%)}
+.win-icons{position:absolute;left:18px;top:16px;display:grid;gap:18px}
+.win-icon{display:grid;justify-items:center;gap:6px;width:78px;font-size:12px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.55)}
+.win-icon i{width:46px;height:38px;border-radius:5px;background:linear-gradient(#f6d77d,#e3b448);box-shadow:0 2px 4px rgba(0,0,0,.2)}
+.win-icon i.i2{background:linear-gradient(#5cc08c,#2f8e5d)}
+.win-icon i.i3{width:36px;height:44px;border-radius:4px 4px 8px 8px;background:linear-gradient(#e9eef2,#b9c4cc)}
+.win-window{position:absolute;left:150px;top:70px;width:760px;height:520px;border-radius:9px;background:#fbfbfc;box-shadow:0 20px 50px -20px rgba(0,0,0,.4),0 0 0 1px rgba(0,0,0,.08);overflow:hidden}
+.ww-bar{height:36px;background:#f0f2f4;border-bottom:1px solid #e1e4e8;display:flex;justify-content:flex-end;gap:18px;padding:0 16px;align-items:center}
+.ww-bar span{width:11px;height:11px;border:1.5px solid #8b939b;border-radius:2px}
+.ww-body{padding:34px 44px;display:grid;gap:14px}
+.ww-body i{display:block;height:12px;border-radius:6px;background:#e4e7eb}
+.ww-body i.s{width:62%}
+.win-taskbar{position:absolute;left:0;right:0;bottom:0;height:48px;background:rgba(238,242,246,.86);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;gap:10px;z-index:5}
+.tb-start{width:26px;height:26px;border-radius:6px;background:linear-gradient(135deg,#5b8ee6,#2f62c8)}
+.tb-search{width:200px;height:32px;border-radius:16px;background:#fff;border:1px solid #d9dee4;color:#8a929a;font-size:12.5px;display:flex;align-items:center;padding-left:14px}
+.tb-app{width:26px;height:26px;border-radius:6px;background:#cfd7df}
+.tb-clock{position:absolute;right:16px;font-size:11.5px;line-height:1.3;text-align:right;color:#20262c}
+
+/* Janelas nativas do Medite reproduzidas como camadas posicionadas (geometria de layout-f2.ts). */
+.mf2-veil-host{position:absolute;left:0;top:0;width:1536px;height:816px;z-index:6}
+.mf2-page-host{position:absolute;left:0;top:0;width:1536px;height:816px;z-index:7;pointer-events:none}
+.mf2-page-host>*{pointer-events:none}
+.mf2-page-host .f2-page,.mf2-page-host .f2-ear,.mf2-page-host .f2-sheet{pointer-events:auto}
+.mf2-circle-host{position:absolute;width:144px;height:144px;z-index:8}
+.mf2-veil-host[hidden],.mf2-page-host[hidden]{display:none}
+.spot{position:absolute;border-radius:50%;pointer-events:none;z-index:9;opacity:0;box-shadow:0 0 0 3px rgba(255,236,170,.95),0 0 0 9999px rgba(10,12,16,.38);transition:opacity .5s}
+.spot.on{opacity:1}
+@media (prefers-reduced-motion:reduce){.win-screen{transition:none}.spot{transition:none}}
+
+.caption{min-height:3em;margin:12px 6px 2px;color:#e8e3d6;font-size:15px;line-height:1.5;text-align:center}
+.caption strong{color:#f2d68c;font-weight:700}
+
+/* Controles */
+.controls{margin-top:14px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:12px 14px;box-shadow:var(--shadow)}
+.ctl-row{display:flex;align-items:center;gap:8px}
+.ctl{width:44px;height:44px;flex:0 0 auto;display:grid;place-items:center;border-radius:50%;border:1px solid var(--line);background:var(--bg);cursor:pointer;color:var(--ink)}
+.ctl svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.ctl:hover{border-color:rgba(15,74,60,.4)}
+.ctl-main{width:52px;height:52px;background:var(--green);color:#fff;border-color:var(--green)}
+.ctl-main svg{fill:currentColor;stroke:none}
+.ctl-main .ico-pause{display:none}
+.player.playing .ctl-main .ico-play{display:none}
+.player.playing .ctl-main .ico-pause{display:block}
+.progress{flex:1;height:6px;border-radius:6px;background:#e8e3d8;overflow:hidden;min-width:40px}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold3),var(--gold2));border-radius:6px}
+.ctl-time{font-size:13px;color:var(--mute);white-space:nowrap;font-variant-numeric:tabular-nums}
+.chapters{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chap{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:7px 13px;font:600 13px Figtree,sans-serif;color:var(--ink2);cursor:pointer}
+.chap[aria-current="step"]{background:var(--green);border-color:var(--green);color:#fff}
+.chap:hover{border-color:rgba(15,74,60,.4)}
+.hint{margin:10px 2px 0;font-size:13px;color:var(--mute)}
+@media (max-width:640px){
+ .screen-frame{padding:6px;border-radius:14px}
+ .screen-viewport{aspect-ratio:4/5}
+ .ctl-time{display:none}
+ .ctl{width:40px;height:40px}
+ .caption{font-size:14px}
+}
+
+/* Tela cheia */
+.player:fullscreen{background:#111;max-width:none;padding:16px;display:flex;flex-direction:column;justify-content:center;overflow:auto}
+.player:fullscreen .screen-frame{max-width:min(100%,calc((100vh - 230px) * 16 / 9));margin:0 auto;width:100%}
+.player:fullscreen .controls{max-width:1180px;margin:12px auto 0;width:100%}
