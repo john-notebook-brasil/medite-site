@@ -8,7 +8,7 @@ var $ = function (s, r) { return (r || document).querySelector(s); };
 var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
 var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-/* ---------- Dados (coleção curada em inglês/KJV) ---------- */
+/* ---------- Dados (adaptações demonstrativas em português) ---------- */
 var verses = D.verses;
 var TABS = ['Ouvir', 'Bíblia', 'Anotações', 'Ajustes'];
 var NOTE_MAX = 300;
@@ -63,7 +63,7 @@ function css(r) { return 'left:' + r.x + 'px;top:' + r.y + 'px;width:' + r.width
 /* ---------- Estado ---------- */
 var WORK = { x: 0, y: 0, width: 1536, height: 816 };          // 1536×864 menos barra de tarefas (48)
 var CIRCLE = { x: 1392, y: 672, width: 144, height: 144 };     // janela do círculo 96a (144×144), canto inferior direito
-var DEFAULT_PREFS = { interval: 3, quietStart: '22:00', quietEnd: '07:00', paused: false, language: 'en', version: 'KJV' };
+var DEFAULT_PREFS = { interval: 3, quietStart: '22:00', quietEnd: '07:00', paused: false, language: 'pt', version: 'PT-BR' };
 var st = {
   open: false, tab: null, verseIndex: 4, library: null, pose: 'parado', pulse: false,
   speaking: false, rate: 1, notes: [], prefs: Object.assign({}, DEFAULT_PREFS),
@@ -79,7 +79,7 @@ circleHost.style.left = CIRCLE.x + 'px'; circleHost.style.top = CIRCLE.y + 'px';
 /* ---------- Janela do círculo ---------- */
 function curVerse() { return verses[st.verseIndex]; }
 function renderCircle() {
-  var v = curVerse(), av = avatarFor(v), name = v.jesus ? 'A cruz' : av.c.en;
+  var v = curVerse(), av = avatarFor(v), name = v.jesus ? 'A cruz' : av.c.pt;
   var cls = 'f2-orb f2-orb-96a f2-orb-gold' + (st.pose === 'acenando' && !reduced.matches ? ' f2-orb-wave' : '') + (st.pulse && !reduced.matches ? ' f2-orb-pulse' : '');
   circleHost.innerHTML = '<main class="f2-circle-stage f2-circle-stage-96a" aria-label="Medite F2 janela do circulo">' +
     '<button class="' + cls + '" style="--f2-avatar-color:' + av.c.cor + '" aria-expanded="' + st.open + '" aria-label="' + (st.open ? 'Fechar pagina' : 'Abrir pagina') + '">' +
@@ -124,14 +124,14 @@ function renderPage() {
 function readingHTML() {
   var v = readingVerse(), lib = st.library !== null;
   var av = lib ? null : avatarFor(v);
-  var name = lib ? 'Bíblia' : v.jesus ? 'A cruz' : av.c.en;
+  var name = lib ? 'Bíblia' : v.jesus ? 'A cruz' : av.c.pt;
   return '<section class="f2-reading" aria-label="Leitura bíblica">' +
    '<header class="f2-reading-head"><div class="f2-reading-person"><div class="f2-reading-portrait">' +
      (av ? avatarImg(av.id, 'parado', name) : '<span aria-hidden="true">✦</span>') + '</div><span>' + esc(name) + '</span></div>' +
      (lib ? '<button type="button" class="f2-reading-return-meditation" data-act="return" aria-label="Voltar à meditação" title="Voltar ao último versículo de meditação"><span aria-hidden="true">✦</span> Meditação</button>' : '') +
      '<button class="f2-reading-close" data-act="close">fechar</button></header>' +
    '<div class="f2-reading-body"><div class="f2-reading-passage" aria-live="polite">' +
-     '<p class="f2-reading-reference">' + esc(ref(v)) + ' <span class="f2-reading-version">KJV</span></p>' +
+     '<p class="f2-reading-reference">' + esc(ref(v)) + ' <span class="f2-reading-version">PT-BR · demonstração</span></p>' +
      '<blockquote class="' + (!lib && v.jesus ? 'f2-reading-jesus' : '') + '">' + esc(v.text) + '</blockquote>' +
      '<p class="f2-reading-meditate">Medite nesse texto.</p></div></div>' +
    '<footer class="f2-reading-foot"><nav class="f2-reading-actions" aria-label="Navegação entre versículos">' +
@@ -168,9 +168,9 @@ function step(d) {
   var p = pageHost.querySelector('.f2-reading-passage'); if (p) p.classList.add('f2-reading-passage-exit');
   timers.fade = setTimeout(function () { timers.fade = 0; commit(); }, 180);
 }
-function waMessage(v) { return ['Meditate on this passage.', '', v.text.split(/\r?\n/).map(function (l) { return '> ' + l; }).join('\n'), '', ref(v) + ' · KJV'].join('\n'); }
+function waMessage(v) { return ['Medite nesse texto.', '', v.text.split(/\r?\n/).map(function (l) { return '> ' + l; }).join('\n'), '', ref(v) + ' · PT-BR (demonstração)'].join('\n'); }
 function copyVerse() {
-  var v = readingVerse(), txt = v.text + '\n' + ref(v) + ' · KJV\nMeditate on this passage.';
+  var v = readingVerse(), txt = v.text + '\n' + ref(v) + ' · PT-BR (demonstração)\nMedite nesse texto.';
   var ok = function () { st.copied = true; st.feedback = 'Versículo copiado.'; renderPage(); clearTimeout(timers.copy); timers.copy = setTimeout(function () { st.copied = false; if (st.open) renderPage(); }, 2000); };
   try { navigator.clipboard.writeText(txt).then(ok, function () { st.feedback = 'Não foi possível copiar o versículo.'; renderPage(); }); }
   catch (e) { st.feedback = 'Não foi possível copiar o versículo.'; renderPage(); }
@@ -218,7 +218,7 @@ function bindPage() {
     el.addEventListener('change', function () {
       var k = el.dataset.pref;
       st.draft[k] = el.type === 'checkbox' ? el.checked : k === 'interval' ? +el.value : el.value;
-      if (k === 'language') st.draft.version = el.value === 'pt' ? 'BLIVRE' : 'KJV';
+      if (k === 'language') st.draft.version = 'PT-BR';
       st.settingsMsg = ''; if (k === 'language') renderPage(); else { var m = pageHost.querySelector('.f2-settings-status'); if (m) m.textContent = ''; }
     });
   });
@@ -235,23 +235,23 @@ function sheetHTML(tab) {
 function listenHTML() {
   var v = readingVerse();
   return '<div class="f2-panel f2-listen" aria-label="Ouvir versículo">' +
-    '<p class="f2-panel-meta">' + esc(ref(v)) + ' · KJV</p>' +
+    '<p class="f2-panel-meta">' + esc(ref(v)) + ' · PT-BR (demonstração)</p>' +
     '<p class="f2-panel-lead">Leitura com voz instalada no Windows, sem internet.</p>' +
     '<div class="f2-panel-controls"><button type="button" data-act="listen">' + (st.speaking ? 'Parar leitura' : 'Ouvir versículo') + '</button>' +
     '<label>Velocidade<select data-rate aria-label="Velocidade de leitura">' + [0.8, 1, 1.2].map(function (r) { return '<option value="' + r + '"' + (r === st.rate ? ' selected' : '') + '>' + r.toFixed(1).replace('.', ',') + '×</option>'; }).join('') + '</select></label></div>' +
     '<p class="f2-panel-feedback" role="status">' + esc(st.listenNotice || (st.speaking ? 'Reproduzindo voz local.' : 'Selecione Ouvir versículo para começar.')) + '</p></div>';
 }
 var speechGen = 0;
-function pickVoice() { // voz local em inglês
-  var vs = window.speechSynthesis.getVoices().filter(function (v) { return v.localService && v.lang.toLowerCase().indexOf('en') === 0; });
-  return vs.filter(function (v) { return v.lang.toLowerCase() === 'en-us'; })[0] || vs[0];
+function pickVoice() { // voz local em português brasileiro
+  var vs = window.speechSynthesis.getVoices().filter(function (v) { return v.localService && v.lang.toLowerCase().indexOf('pt') === 0; });
+  return vs.filter(function (v) { return v.lang.toLowerCase() === 'pt-br'; })[0] || vs[0];
 }
 function play() {
   stopSpeech();
   if (!('speechSynthesis' in window)) { st.listenNotice = 'Leitura em voz alta não disponível neste navegador.'; renderPage(); return; }
   var go = function () {
     var voice = pickVoice();
-    if (!voice) { st.listenNotice = 'Nenhuma voz local em inglês neste dispositivo. No Windows, o Medite usa as vozes instaladas no sistema.'; renderPage(); return; }
+    if (!voice) { st.listenNotice = 'Nenhuma voz local em português brasileiro neste dispositivo. No Windows, o Medite usa as vozes instaladas no sistema.'; renderPage(); return; }
     var gen = ++speechGen, u = new SpeechSynthesisUtterance(readingVerse().text);
     u.lang = voice.lang; u.voice = voice; u.rate = st.rate; u.pitch = 1;
     u.onend = u.onerror = function () { if (gen === speechGen) { st.speaking = false; setPose('parado'); if (st.open && st.tab === 0) renderPage(); } };
@@ -295,7 +295,7 @@ function notesHTML() {
   var v = readingVerse(), list = st.notes.filter(function (n) { return n.verseId === v.id; });
   var count = Array.from(st.noteText || '').length;
   return '<div class="f2-panel f2-notes" role="region" aria-label="Anotações privadas">' +
-    '<p class="f2-panel-meta">' + esc(ref(v)) + ' · KJV</p>' +
+    '<p class="f2-panel-meta">' + esc(ref(v)) + ' · PT-BR (demonstração)</p>' +
     '<p class="f2-panel-lead">Suas anotações ficam somente neste computador.</p>' +
     '<label class="f2-notes-label" for="f2-notes-editor">Escreva sua reflexão</label>' +
     '<textarea id="f2-notes-editor" maxlength="' + NOTE_MAX + '" rows="4" placeholder="O que esse versículo trouxe à sua reflexão?"></textarea>' +
@@ -332,8 +332,8 @@ function settingsHTML() {
     '<div class="f2-settings-times"><label class="f2-settings-field">Silêncio começa<input data-pref="quietStart" aria-label="Início do período de silêncio" type="time" value="' + d.quietStart + '"></label>' +
     '<label class="f2-settings-field">Silêncio termina<input data-pref="quietEnd" aria-label="Fim do período de silêncio" type="time" value="' + d.quietEnd + '"></label></div>' +
     '<p class="f2-settings-hint">Horários iguais desativam o período de silêncio.</p>' +
-    '<label class="f2-settings-field">Idioma de leitura<select data-pref="language" aria-label="Idioma"><option value="pt"' + sel('pt', d.language) + '>Português (Brasil)</option><option value="en"' + sel('en', d.language) + '>English</option></select></label>' +
-    '<p class="f2-settings-hint">Tradução disponível: ' + (d.language === 'pt' ? 'Bíblia Livre (BLIVRE)' : 'King James Version (KJV)') + '. Outras traduções permanecem pendentes.</p>' +
+    '<label class="f2-settings-field">Idioma de leitura<select data-pref="language" aria-label="Idioma"><option value="pt"' + sel('pt', d.language) + '>Português (Brasil)</option></select></label>' +
+    '<p class="f2-settings-hint">Textos ilustrativos em português (adaptação demonstrativa). Não constituem reprodução da Bíblia Livre.</p>' +
     '<button type="button" class="f2-settings-save" data-act="settings-save">Salvar preferências</button>' +
     '<p class="f2-settings-status" role="status">' + esc(st.settingsMsg || '') + '</p>' +
     '<p class="f2-settings-hint">As opções de agenda ficam registradas nas preferências locais. A ativação dos lembretes automáticos da F2 e a inicialização com o Windows exigem etapa própria de integração.</p></div>';
@@ -341,7 +341,6 @@ function settingsHTML() {
 function saveSettings() {
   var d = st.draft, T = /^([01]\d|2[0-3]):[0-5]\d$/;
   if (!T.test(d.quietStart) || !T.test(d.quietEnd)) st.settingsMsg = 'Informe os horários no formato HH:MM.';
-  else if (d.language === 'pt') st.settingsMsg = 'Nesta prévia do site a leitura permanece em inglês (KJV); a Bíblia Livre aguarda verificação de licença para publicação.';
   else { st.prefs = Object.assign({}, d); st.settingsMsg = 'Preferências aplicadas somente nesta demonstração.'; }
   renderPage();
 }
@@ -408,7 +407,7 @@ var SCENES = [
   { label: 'Meditação', dur: 7000, cap: '<strong>Abrir a meditação.</strong> Um clique no avatar abre a página com o versículo, a referência e as ações Anterior, Próximo, Copiar e WhatsApp.',
     acts: [[0, function () { reset(false); }], [700, function () { openPage(); }], [4200, function () { step(1); }], [5600, function () { step(-1); }]] },
   { label: 'Bíblia', dur: 8500, cap: '<strong>Bíblia.</strong> Na gaveta roxa, escolha livro, capítulo e versículo e leia na página principal. O botão dourado “Meditação” volta ao versículo do dia.',
-    acts: [[0, function () { reset(true); }], [600, function () { selectTab(1); }], [2600, function () { bibleChange('book', 'Psalms'); }], [4000, function () { bibleChange('chapter', '27'); }], [5600, function () { var v = bibleSelected(); if (v) { st.library = v; renderPage(); } }]] },
+    acts: [[0, function () { reset(true); }], [600, function () { selectTab(1); }], [2600, function () { bibleChange('book', 'Salmos'); }], [4000, function () { bibleChange('chapter', '27'); }], [5600, function () { var v = bibleSelected(); if (v) { st.library = v; renderPage(); } }]] },
   { label: 'Ouvir', dur: 6500, cap: '<strong>Ouvir.</strong> O versículo é lido em voz alta com a voz instalada no Windows, sem internet. Toque em “Ouvir versículo” para escutar com a voz do seu dispositivo.',
     acts: [[0, function () { reset(true); }], [600, function () { selectTab(0); }]] },
   { label: 'Anotações', dur: 8000, cap: '<strong>Anotações.</strong> Registre sua reflexão sobre o versículo; ela fica somente no seu computador. (Texto fictício de demonstração.)',
