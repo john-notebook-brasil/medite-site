@@ -195,3 +195,32 @@ p{margin:0 0 1em}
 @media (max-width:700px){.foot-grid{grid-template-columns:1fr}}
 .contact-lines{font-size:15px}.contact-lines a{color:inherit}
 .foot-copy{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:16px}
+
+/* Ilustracao F2 em PT-BR para a pagina inicial. Capturas historicas permanecem inalteradas. */
+.hero-app-preview{display:grid;grid-template-columns:minmax(0,1.4fr) 50px minmax(0,1fr);position:relative;min-height:310px;aspect-ratio:882/532;background:#e1e2e2;padding:18px;gap:4px;overflow:hidden;font-family:Figtree,Arial,sans-serif;color:#34312d}
+.hero-app-page{display:flex;flex-direction:column;min-width:0;background:#fcf9f3;border:2px solid #bc873c;border-radius:11px;overflow:hidden;box-shadow:0 4px 13px rgba(0,0,0,.12)}
+.hero-app-top{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-bottom:1px solid #ded7cc;background:#faf8f4;font-size:10px;gap:4px}
+.hero-app-tiny{display:flex;align-items:center;gap:6px;font-weight:650;white-space:nowrap}
+.hero-app-tiny img{border-radius:50%;width:25px;height:25px;object-fit:cover}
+.hero-app-ref{padding:12px 14px 0;font-size:9px;letter-spacing:.12em;font-weight:700}
+.hero-app-ref small{letter-spacing:0;font:500 8px Figtree,Arial,sans-serif;border:1px solid #c6bca9;padding:2px 3px;margin-left:3px;white-space:nowrap}
+.hero-app-verse{font:400 clamp(11px,1.35vw,22px)/1.35 Newsreader,Georgia,serif;padding:9px 14px 0}
+.hero-app-italic{font:italic 12px Newsreader,Georgia,serif;color:#858079;padding:9px 14px}
+.hero-app-bottom{display:flex;align-items:stretch;justify-content:space-around;margin-top:auto;border-top:1px solid #e6ddd0;font:600 8px Figtree,Arial,sans-serif}
+.hero-app-bottom span{flex:1;text-align:center;padding:9px 2px;border-right:1px solid #e0d9d0}
+.hero-app-bottom span:last-child{background:#075a4d;color:white;border:0}
+.hero-app-tabs{display:flex;flex-direction:column;gap:4px;align-self:start;padding-top:18px;overflow:hidden}
+.hero-app-tabs span{font:700 9px Figtree,Arial,sans-serif;text-align:center;border-radius:0 8px 8px 0;color:#fff;padding:10px 1px;background:linear-gradient(#4c99fe,#1653c5);border:1px solid #fff6}
+.hero-app-tabs span:nth-child(2){background:linear-gradient(#8a5be9,#552db9)}
+.hero-app-tabs span:nth-child(3){background:linear-gradient(#24b5a9,#08796f)}
+.hero-app-tabs span:nth-child(4){background:linear-gradient(#d5903e,#a76311)}
+.hero-app-side{background:#fcf9f3;border:2px solid #bd873c;border-radius:11px;min-width:0;overflow:hidden;box-shadow:0 4px 13px rgba(0,0,0,.12)}
+.hero-app-side-top{background:linear-gradient(#9568f2,#5f33bb);padding:10px 12px;color:#fff;font-weight:700;font-size:12px;display:flex;justify-content:space-between;gap:3px}
+.hero-app-side-top small{font-size:8px}
+.hero-app-side-body{padding:12px;font-size:10px}
+.hero-app-side-body strong{font-size:11px}
+.hero-app-side-body p{margin:8px 0;color:#555;line-height:1.35;font-size:10px}
+.hero-app-side-body>span{display:inline-block;background:#344655;padding:8px 7px;border-radius:5px;color:white;font-size:9px;font-weight:700}
+.hero-app-orb{position:absolute;right:12px;bottom:8px;border-radius:50%;padding:4px;background:var(--gold-ring);box-shadow:0 3px 9px #0005}
+.hero-app-orb img{width:65px;height:65px;border-radius:50%}
+@media(max-width:600px){.hero-app-preview{padding:8px;gap:2px;min-height:190px}.hero-app-top{padding:5px;font-size:8px}.hero-app-tiny img{width:18px;height:18px}.hero-app-ref{padding:6px 6px 0;font-size:7px}.hero-app-ref small{display:none}.hero-app-verse{padding:5px 6px 0;font-size:clamp(10px,3vw,17px)}.hero-app-italic{font-size:9px;padding:4px 6px}.hero-app-bottom span{font-size:7px;padding:6px 1px}.hero-app-tabs{padding-top:8px}.hero-app-tabs span{font-size:7px;padding:6px 0}.hero-app-side-top{padding:6px;font-size:9px}.hero-app-side-top small{display:none}.hero-app-side-body{padding:6px;font-size:8px}.hero-app-side-body strong,.hero-app-side-body p{font-size:8px}.hero-app-side-body>span{font-size:7px;padding:5px}.hero-app-orb img{width:35px;height:35px}.hero-app-orb{padding:2px;right:5px;bottom:4px}}
