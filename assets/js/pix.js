@@ -57,6 +57,13 @@ function choose(card, focus) {
   $('#pixCanvas').setAttribute('aria-label', ativo ? 'QR Code PIX de ' + rotulo : 'QR Code de demonstração, sem valor de pagamento');
   status.textContent = '';
   box.hidden = false;
+  // Após selecionar um avatar, mostrar a área PIX na tela (desktop e celular).
+  window.requestAnimationFrame(function () {
+    box.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      block: 'start'
+    });
+  });
 }
 cards.forEach(function (c, i) {
   c.tabIndex = i === 0 ? 0 : -1;
