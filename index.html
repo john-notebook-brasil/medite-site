@@ -110,14 +110,8 @@
    <p>Um pequeno avatar circular com moldura dourada fica sobre a sua área de trabalho. Clique nele e a meditação se abre; quatro gavetas coloridas levam a Ouvir, Bíblia, Anotações e Ajustes.</p>
   </header>
 
-  <div class="demo-tabs" role="tablist" aria-label="Tipo de demonstração">
-   <button role="tab" id="tab-repro" aria-selected="true" aria-controls="panel-repro">Demonstração interativa</button>
-   <button role="tab" id="tab-video" aria-selected="false" aria-controls="panel-video" tabindex="-1">Gravação real</button>
-   <button role="tab" id="tab-caps" aria-selected="false" aria-controls="panel-caps" tabindex="-1">Capturas reais</button>
-  </div>
-
   <!-- Reprodução interativa -->
-  <div id="panel-repro" role="tabpanel" aria-labelledby="tab-repro" class="demo-panel">
+  <div id="panel-repro" class="demo-panel">
    <p class="honesty"><strong>Reprodução interativa.</strong> As telas abaixo utilizam estilos, dimensões e avatares inspirados no código real do Medite F2 (versão 0.3.0), com textos demonstrativos adaptados para português. Não é uma gravação de tela. Nesta prévia nada é salvo e nenhum lembrete é agendado.</p>
 
    <div class="player" id="player">
@@ -168,7 +162,8 @@
   </div>
 
   <!-- Gravação real -->
-  <div id="panel-video" role="tabpanel" aria-labelledby="tab-video" class="demo-panel" hidden>
+  <div id="panel-video" class="demo-panel demo-media" hidden>
+   <h3 class="demo-subtitle">Gravação real do Medite</h3>
    <div class="video-wait" id="videoWait">
     <img src="assets/captures/captura-real-biblia.webp" alt="Captura real do Medite com a gaveta Bíblia aberta" width="882" height="532" loading="lazy">
     <div class="video-wait-msg">
@@ -185,7 +180,8 @@
   </div>
 
   <!-- Capturas reais -->
-  <div id="panel-caps" role="tabpanel" aria-labelledby="tab-caps" class="demo-panel" hidden>
+  <div id="panel-caps" class="demo-panel demo-media">
+   <h3 class="demo-subtitle">Capturas reais do Medite</h3>
    <div class="caps">
     <figure><img src="assets/captures/captura-real-biblia.webp" alt="Captura real: meditação Josué 1:9 com a gaveta Bíblia aberta" loading="lazy" width="882" height="532"><figcaption>Gaveta Bíblia aberta ao lado da meditação.</figcaption></figure>
     <figure><img src="assets/captures/captura-real-ouvir.webp" alt="Captura real: meditação Josué 1:9 com a gaveta Ouvir aberta" loading="lazy" width="882" height="532"><figcaption>Gaveta Ouvir: leitura com voz instalada no Windows.</figcaption></figure>

@@ -1,4 +1,4 @@
-/* Comportamentos gerais do site: menu, abas da demonstração e player da gravação real. */
+/* Comportamentos gerais do site: menu e player da gravação real. */
 (function () {
 'use strict';
 var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -18,29 +18,10 @@ toggle.addEventListener('click', function () {
 });
 nav.addEventListener('click', function (e) { if (e.target.closest('a')) { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); } });
 
-/* Abas da demonstração (padrão WAI-ARIA tabs) */
-var tabs = Array.prototype.slice.call(document.querySelectorAll('.demo-tabs [role=tab]'));
-function select(t, focus) {
-  tabs.forEach(function (x) {
-    var on = x === t;
-    x.setAttribute('aria-selected', String(on)); x.tabIndex = on ? 0 : -1;
-    document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
-  });
-  if (focus) t.focus();
-  if (t.id !== 'tab-video') { var v = $('#realVideo'); if (v && !v.paused) v.pause(); }
-  window.dispatchEvent(new Event('resize'));
-}
-tabs.forEach(function (t, i) {
-  t.addEventListener('click', function () { select(t); });
-  t.addEventListener('keydown', function (e) {
-    var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-    if (d) { e.preventDefault(); select(tabs[(i + d + tabs.length) % tabs.length], true); }
-  });
-});
-
 /* Gravação real: aparece somente quando houver arquivo autêntico configurado. */
 var vc = cfg.video || {};
 if (vc.src) {
+  $('#panel-video').hidden = false;
   $('#videoWait').hidden = true; $('#videoReal').hidden = false;
   var video = $('#realVideo'); video.src = vc.src; if (vc.poster) video.poster = vc.poster;
   var box = $('#videoChapters');
