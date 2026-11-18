@@ -92,6 +92,12 @@ p{margin:0 0 1em}
 .demo-tabs{display:flex;justify-content:center;gap:6px;margin:0 auto 22px;padding:5px;background:var(--paper);border:1px solid var(--line);border-radius:999px;width:max-content;max-width:100%;overflow-x:auto}
 .demo-tabs button{border:0;background:none;font:600 14.5px Figtree,sans-serif;color:var(--ink2);padding:9px 18px;border-radius:999px;cursor:pointer;white-space:nowrap}
 .demo-tabs button[aria-selected="true"]{background:var(--green);color:#fff}
+
+/* Em telas pequenas, tres abas igualmente visiveis, sem corte lateral. */
+@media (max-width:640px){
+ .demo-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:4px;overflow:visible;border-radius:18px}
+ .demo-tabs button{display:flex;align-items:center;justify-content:center;min-width:0;min-height:44px;padding:9px 3px;font-size:clamp(11px,3vw,13px);line-height:1.25;text-align:center;white-space:normal;overflow-wrap:anywhere}
+}
 .honesty{max-width:860px;margin:0 auto 20px;font-size:14px;color:var(--ink2);background:#fffaf0;border:1px solid #ecdcb5;border-radius:12px;padding:10px 14px;text-align:center}
 .caps{display:grid;grid-template-columns:1fr 1fr 220px;gap:18px;align-items:start}
 .caps figure{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
