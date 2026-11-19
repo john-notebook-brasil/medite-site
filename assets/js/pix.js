@@ -5,7 +5,17 @@
 'use strict';
 var $ = function (s) { return document.querySelector(s); };
 var cfg = (window.MEDITE_SITE_CONFIG || {}).pix || {};
-var ativo = Boolean(cfg.ativo && cfg.chave && cfg.nome && cfg.cidade);
+/* The public configuration accepts only random Pix keys (EVP UUID), not CPF/email/phone. */
+function normalizedRandomKey(value) {
+  var key = String(value || '').trim().toLowerCase();
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(key) ? key : '';
+}
+var chave = normalizedRandomKey(cfg.chave);
+var ativo = Boolean(cfg.ativo === true && chave && cfg.nome && cfg.cidade);
+if (ativo) {
+  var demoLabel = document.querySelector('.support .demo-flag');
+  if (demoLabel) demoLabel.hidden = true;
+}
 
 /* CRC16-CCITT-FALSE (poli 0x1021, inicial 0xFFFF), exigido pelo BR Code. */
 function crc16(str) {
@@ -21,13 +31,17 @@ function ascii(s, max) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').repla
 /* Payload PIX estático com valor (Manual de Padrões para Iniciação do Pix, BCB). */
 function brcode(valor) {
   var p = f('00', '01') +
-    f('26', f('00', 'br.gov.bcb.pix') + f('01', cfg.chave)) +
+    f('26', f('00', 'br.gov.bcb.pix') + f('01', chave)) +
     f('52', '0000') + f('53', '986') + f('54', valor.toFixed(2)) + f('58', 'BR') +
     f('59', ascii(cfg.nome, 25)) + f('60', ascii(cfg.cidade, 15)) +
     f('62', f('05', (cfg.txid || 'MEDITE').replace(/[^A-Za-z0-9]/g, '').slice(0, 25) || '***')) + '6304';
   return p + crc16(p);
 }
-window.MeditePixSelfTest = function () { return crc16('123456789') === '29B1'; };
+window.MeditePixSelfTest = function () {
+  return crc16('123456789') === '29B1' &&
+    normalizedRandomKey('123e4567-e89b-42d3-a456-426614174000') === '123e4567-e89b-42d3-a456-426614174000' &&
+    normalizedRandomKey('529.982.247-25') === '' && normalizedRandomKey('') === '';
+};
 
 function drawQR(canvas, text) {
   var qr = new window.MediteQR(-1, 0 /* nível M */); qr.addData(text); qr.make();

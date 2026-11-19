@@ -20,13 +20,13 @@ window.MEDITE_SITE_CONFIG = {
     ]
   },
 
-  /* PIX — permanece em MODO DEMONSTRAÇÃO enquanto ativo=false.
-   * Preencher somente com dados reais fornecidos e autorizados pelo proprietário. */
+  /* PIX de contribuicoes voluntarias — chave aleatoria autorizada pelo proprietario em 19/11/2026.
+   * Dados de recebedor e chave EVP sao publicos, nunca usar CPF como chave neste site. */
   pix: {
-    ativo: false,
-    chave: '',      // chave PIX do recebedor
-    nome: '',       // nome do recebedor, sem acentos, até 25 caracteres
-    cidade: '',     // cidade do recebedor, sem acentos, até 15 caracteres
+    ativo: true,
+    chave: '78365dd6-c1f2-4ae8-bd39-547ef9f8746d',      // chave aleatoria EVP validada no banco, nao e CPF
+    nome: 'John Robert Martins Pereira',       // recebedor; BR Code reduz a 25 caracteres
+    cidade: 'São Paulo',     // cidade; BR Code normaliza para SAO PAULO
     txid: 'MEDITE'  // identificador (letras e números, até 25)
   }
 };
