@@ -19,8 +19,8 @@ function normalizedKey(value) {
   var s = String(value || '').trim();
   if (/^[\\d.\\-\\s]+$/.test(s)) {
     var digits = s.replace(/\\D/g, '');
-    if (digits.length === 11 && cpfValid(digits)) return digits;
-    if (digits.length === 14 || digits.length === 10 || digits.length === 11) return digits;
+    if (digits.length === 11) return cpfValid(digits) ? digits : '';
+    if (digits.length === 14) return digits;
   }
   return s;
 }
