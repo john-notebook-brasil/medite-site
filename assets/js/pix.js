@@ -5,27 +5,13 @@
 'use strict';
 var $ = function (s) { return document.querySelector(s); };
 var cfg = (window.MEDITE_SITE_CONFIG || {}).pix || {};
-function cpfValid(v) {
-  if (!/^\\d{11}$/.test(v) || /^(\\d)\\1{10}$/.test(v)) return false;
-  for (var n = 9; n <= 10; n++) {
-    var sum = 0;
-    for (var i = 0; i < n; i++) sum += Number(v[i]) * (n + 1 - i);
-    var check = (sum * 10) % 11; if (check === 10) check = 0;
-    if (Number(v[n]) !== check) return false;
-  }
-  return true;
+/* The public configuration accepts only random Pix keys (EVP UUID), not CPF/email/phone. */
+function normalizedRandomKey(value) {
+  var key = String(value || '').trim().toLowerCase();
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(key) ? key : '';
 }
-function normalizedKey(value) {
-  var s = String(value || '').trim();
-  if (/^[\\d.\\-\\s]+$/.test(s)) {
-    var digits = s.replace(/\\D/g, '');
-    if (digits.length === 11) return cpfValid(digits) ? digits : '';
-    if (digits.length === 14) return digits;
-  }
-  return s;
-}
-var chave = normalizedKey(cfg.chave);
-var ativo = Boolean(cfg.ativo && chave && cfg.nome && cfg.cidade);
+var chave = normalizedRandomKey(cfg.chave);
+var ativo = Boolean(cfg.ativo === true && chave && cfg.nome && cfg.cidade);
 if (ativo) {
   var demoLabel = document.querySelector('.support .demo-flag');
   if (demoLabel) demoLabel.hidden = true;
@@ -52,9 +38,9 @@ function brcode(valor) {
   return p + crc16(p);
 }
 window.MeditePixSelfTest = function () {
-  return crc16('123456789') === '29B1' && cpfValid('52998224725') &&
-    normalizedKey('529.982.247-25') === '52998224725' &&
-    !cpfValid('52998224726');
+  return crc16('123456789') === '29B1' &&
+    normalizedRandomKey('123e4567-e89b-42d3-a456-426614174000') === '123e4567-e89b-42d3-a456-426614174000' &&
+    normalizedRandomKey('529.982.247-25') === '' && normalizedRandomKey('') === '';
 };
 
 function drawQR(canvas, text) {
