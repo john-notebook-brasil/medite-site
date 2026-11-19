@@ -24,9 +24,9 @@ window.MEDITE_SITE_CONFIG = {
    * Preencher somente com dados reais fornecidos e autorizados pelo proprietário. */
   pix: {
     ativo: false,
-    chave: '',      // chave PIX do recebedor
-    nome: '',       // nome do recebedor, sem acentos, até 25 caracteres
-    cidade: '',     // cidade do recebedor, sem acentos, até 15 caracteres
+    chave: '78365dd6-c1f2-4ae8-bd39-547ef9f8746d',      // chave aleatoria EVP; manter ativo=false ate validacao bancaria
+    nome: 'John Robert Martins Pereira',       // recebedor; BR Code reduz a 25 caracteres
+    cidade: 'São Paulo',     // cidade; BR Code normaliza para SAO PAULO
     txid: 'MEDITE'  // identificador (letras e números, até 25)
   }
 };
