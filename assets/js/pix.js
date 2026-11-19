@@ -5,7 +5,31 @@
 'use strict';
 var $ = function (s) { return document.querySelector(s); };
 var cfg = (window.MEDITE_SITE_CONFIG || {}).pix || {};
-var ativo = Boolean(cfg.ativo && cfg.chave && cfg.nome && cfg.cidade);
+function cpfValid(v) {
+  if (!/^\\d{11}$/.test(v) || /^(\\d)\\1{10}$/.test(v)) return false;
+  for (var n = 9; n <= 10; n++) {
+    var sum = 0;
+    for (var i = 0; i < n; i++) sum += Number(v[i]) * (n + 1 - i);
+    var check = (sum * 10) % 11; if (check === 10) check = 0;
+    if (Number(v[n]) !== check) return false;
+  }
+  return true;
+}
+function normalizedKey(value) {
+  var s = String(value || '').trim();
+  if (/^[\\d.\\-\\s]+$/.test(s)) {
+    var digits = s.replace(/\\D/g, '');
+    if (digits.length === 11 && cpfValid(digits)) return digits;
+    if (digits.length === 14 || digits.length === 10 || digits.length === 11) return digits;
+  }
+  return s;
+}
+var chave = normalizedKey(cfg.chave);
+var ativo = Boolean(cfg.ativo && chave && cfg.nome && cfg.cidade);
+if (ativo) {
+  var demoLabel = document.querySelector('.support .demo-flag');
+  if (demoLabel) demoLabel.hidden = true;
+}
 
 /* CRC16-CCITT-FALSE (poli 0x1021, inicial 0xFFFF), exigido pelo BR Code. */
 function crc16(str) {
@@ -21,13 +45,17 @@ function ascii(s, max) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').repla
 /* Payload PIX estático com valor (Manual de Padrões para Iniciação do Pix, BCB). */
 function brcode(valor) {
   var p = f('00', '01') +
-    f('26', f('00', 'br.gov.bcb.pix') + f('01', cfg.chave)) +
+    f('26', f('00', 'br.gov.bcb.pix') + f('01', chave)) +
     f('52', '0000') + f('53', '986') + f('54', valor.toFixed(2)) + f('58', 'BR') +
     f('59', ascii(cfg.nome, 25)) + f('60', ascii(cfg.cidade, 15)) +
     f('62', f('05', (cfg.txid || 'MEDITE').replace(/[^A-Za-z0-9]/g, '').slice(0, 25) || '***')) + '6304';
   return p + crc16(p);
 }
-window.MeditePixSelfTest = function () { return crc16('123456789') === '29B1'; };
+window.MeditePixSelfTest = function () {
+  return crc16('123456789') === '29B1' && cpfValid('52998224725') &&
+    normalizedKey('529.982.247-25') === '52998224725' &&
+    !cpfValid('52998224726');
+};
 
 function drawQR(canvas, text) {
   var qr = new window.MediteQR(-1, 0 /* nível M */); qr.addData(text); qr.make();
