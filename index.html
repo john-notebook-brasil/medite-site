@@ -248,9 +248,11 @@
   <div class="dl-card">
    <img class="dl-logo" src="assets/img/medite-logo-384.webp" alt="Logo do Medite" width="120" height="120" loading="lazy">
    <p class="dl-name">Medite para Windows</p>
-   <p class="dl-meta">Versão em testes</p>
-   <button class="btn btn-primary" type="button" disabled aria-describedby="dl-note">Disponível em breve</button>
+   <p id="medite-download-version" class="dl-meta">Versão em testes</p>
+   <button id="medite-download-button" class="btn btn-primary" type="button" disabled aria-describedby="dl-note">Disponível em breve</button>
    <p class="fine" id="dl-note">O instalador ainda não está disponível para download público.</p>
+   <p class="fine" id="medite-download-checksum" hidden></p>
+   <p class="fine" id="medite-download-warning" hidden></p>
   </div>
  </div>
 </section>
@@ -342,6 +344,7 @@
 <script src="assets/js/medite-data.js" defer></script>
 <script src="assets/js/qr.js" defer></script>
 <script src="assets/js/site.js" defer></script>
+<script src="assets/js/download.js" defer></script>
 <script src="assets/js/medite-demo.js" defer></script>
 <script src="assets/js/pix.js" defer></script>
 </body>
