@@ -1,5 +1,5 @@
 # Medite — Declaração de propósito e critérios da primeira publicação
-**Proposta editorial para aprovação do proprietário (20/11/2026). Não publicar antes de aprovar.**
+**REDAÇÃO APROVADA EXPRESSAMENTE pelo proprietário em 20/11/2026.** Aprovação do texto não é autorização para merge, upload público nem ativação do download.
 
 ## Declaração cristã (texto sugerido)
 O Medite é um aplicativo cristão criado para incentivar a leitura da Bíblia e momentos pessoais de reflexão ao longo do dia. Acreditamos que as Escrituras merecem ser lidas com atenção, respeito e sinceridade, sem substituir o contexto dos textos por mensagens inventadas.
@@ -9,7 +9,7 @@ O aplicativo é gratuito. Seu objetivo não é representar uma igreja ou denomin
 O Medite não substitui a convivência comunitária, o aconselhamento pastoral ou o cuidado profissional quando necessário. Nosso compromisso é preservar a identificação das traduções bíblicas e indicar corretamente seus créditos.
 
 ## O que ainda exige decisão expressa
-- Aprovar ou ajustar integralmente a declaração acima (não presume aprovação).
+- Declaração cristã: **APROVADA em 20/11/2026**. Falta incorporá-la em Sobre e no site na versão final aprovada para distribuição.
 - Confirmar licença de distribuição do **programa** e autorização do responsável sobre uso do logo e das artes produzidas com Gemini, após conferência dos termos de uso.
 - Registrar o tratamento para visitantes do Reino Unido na distribuição da KJV 1769, sem presumir que domínio público em outros países se aplica automaticamente no UK.
 - Definir se a opção manual de verificar atualizações (R0-03) é obrigação para a versão de lançamento ou fica expressamente fora deste release; não fazer alteração funcional silenciosa.
