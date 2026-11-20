@@ -204,6 +204,51 @@ var translations={
  "Filipenses": "Philippians",
  "1 Pedro": "1 Peter"
 };
+Object.assign(translations,{
+ "Voltar ao site": "Back to website",
+ "Medite — Privacidade, termos e créditos (proposta para aprovação)": "Medite — Privacy, terms, and credits (draft for approval)",
+ "Informações legais": "Legal information",
+ "Proposta editorial para aprovação do responsável.": "Editorial draft pending the owner's approval.",
+ "As informações abaixo descrevem a versão 0.3.0 em preparação. Este documento não concede licença de redistribuição, não declara marca registrada e não substitui revisão jurídica quando necessária. Itens marcados como": "The information below describes version 0.3.0 under preparation. This document does not grant redistribution rights, claim trademark registration, or replace legal review where necessary. Items marked",
+ "pendente": "pending",
+ "exigem confirmação antes do download público.": "require confirmation before public downloads.",
+ "O site.": "The website.",
+ "Este site não usa cookies de rastreamento, ferramentas de análise, publicidade nem formulários. Não coletamos nome, e-mail, crença religiosa ou qualquer outro dado pessoal dos visitantes. A demonstração interativa funciona inteiramente no seu navegador e não envia o que você digita.": "This website does not use tracking cookies, analytics tools, advertising, or forms. We do not collect visitors' names, email addresses, religious beliefs, or other personal information. The interactive demonstration runs in your browser and does not transmit what you type.",
+ "Contribuições.": "Donations.",
+ "O site oferece contribuição voluntária por Pix, sem contrapartida ou desbloqueio de funcionalidades. O código Pix é apresentado para pagamento diretamente no banco do visitante. Antes de confirmar, confira no aplicativo bancário o nome do recebedor, valor e demais dados. O site não processa pagamentos nem recebe confirmação automática do banco.": "The website offers optional donations via Pix, Brazil's instant payment system, without unlocking additional features. Your own banking app handles payment. Verify the recipient and amount before confirming. The website does not process payments or receive automatic payment confirmations.",
+ "O aplicativo.": "The application.",
+ "O Medite 0.3.0 funciona sem conta obrigatória e mantém anotações e preferências localmente no computador. Testes em Windows Sandbox confirmaram persistência após reinstalação e atualização sintética entre versões, sem constituir garantia de ausência de falhas em todos os equipamentos. A leitura em voz alta usa vozes instaladas no Windows. O botão WhatsApp abre um compartilhamento apenas por iniciativa do usuário; o aplicativo não envia anotações automaticamente.": "Medite 0.3.0 works without a required account and stores notes and preferences locally on your computer. Windows Sandbox tests confirmed data retention after reinstallation and a simulated upgrade, but cannot guarantee error-free operation on every device. Read-aloud uses installed Windows voices. WhatsApp sharing happens only when you request it; notes are never sent automatically.",
+ "Hospedagem.": "Hosting.",
+ "O site é servido pelo GitHub Pages. O provedor pode processar dados técnicos, como endereço IP, necessários para entrega e segurança do serviço, segundo sua própria política de privacidade. O projeto Medite não opera ferramentas próprias de rastreamento no site. O instalador, quando autorizado, será hospedado em distribuição separada, identificada na página de download.": "The website is hosted on GitHub Pages. That provider may process technical information, such as IP addresses, to deliver and protect the website under its own privacy policy. Medite does not operate its own tracking tools. When authorized, the installer will be hosted separately and linked from the download section.",
+ "Responsável e contato.": "Responsible party and contact.",
+ "Medite é criado por John Robert Martins Pereira. Contato:": "Medite was created by John Robert Martins Pereira. Contact:",
+ "Termos de uso": "Terms of use",
+ "O Medite é oferecido gratuitamente, para uso pessoal. Não há assinatura, compras internas, recursos pagos ou benefícios vinculados a doações. Contribuições são voluntárias e não constituem compra de produto ou serviço.": "Medite is provided free of charge for personal use. There are no subscriptions, in-app purchases, premium features, or donation-based perks. Donations are optional and do not constitute a purchase.",
+ "O aplicativo está sendo preparado para distribuição gratuita. O instalador deve ser obtido exclusivamente pelo endereço de download indicado no site oficial, acompanhado de hash SHA-256 para verificação de integridade. A compilação atual não é assinada digitalmente; o Windows poderá exibir avisos. Não desative ferramentas de segurança para executar um arquivo de origem desconhecida.": "The application is being prepared for free distribution. Only download the installer through the official website and verify its SHA-256 checksum. The current build is unsigned, so Windows may display warnings. Do not disable security protections to run a file from an unknown source.",
+ "O Medite pode apresentar erros ou incompatibilidades, apesar dos testes realizados. Informações bíblicas e de meditação são recursos de leitura e reflexão, não substituindo aconselhamento profissional necessário em outras áreas.": "Medite may contain errors or compatibility issues despite testing. Scripture and reflection features are for personal reading and are not substitutes for professional advice in other fields.",
+ "pendente: licença do programa, regras de redistribuição, condições de suporte e foro": "pending: program license, redistribution rules, support conditions, and jurisdiction",
+ "Nenhuma disposição desta proposta deve ser interpretada como autorização para redistribuir o instalador ou usar comercialmente a marca.": "Nothing in this draft authorizes redistributing the installer or commercial use of the brand.",
+ "Créditos e licenças": "Credits and licenses",
+ "Item": "Item",
+ "Origem e licença": "Source and license",
+ "Avatares bíblicos": "Biblical avatars",
+ "Ilustrações desenvolvidas para o projeto com auxílio de geração de imagens por IA, incluindo evidência de criação de Abraão no Gemini em 05/11/2026. Personagens bíblicos históricos não implicam autorização para reproduzir designs protegidos de terceiros.": "Illustrations developed for the project with the assistance of AI image generation, including evidence of an Abraham design created in Gemini on November 5, 2026. Biblical historical figures do not authorize reproduction of third-party protected designs.",
+ "pendente: conferência da procedência do conjunto completo, eventuais direitos de terceiros e termos aplicáveis": "pending: provenance of the full set, third-party rights, and applicable terms",
+ "Textos bíblicos da demonstração": "Bible demo text",
+ "Adaptações demonstrativas em português preparadas para ilustrar a interface; não atribuídas à Bíblia Livre nem a uma edição bíblica específica. As capturas históricas de 17/11/2026 conservam o texto KJV original.": "Demonstration paraphrases used to illustrate the interface, not attributed to Bíblia Livre or a particular Bible edition. Historic screenshots from November 17, 2026 retain the original KJV text.",
+ "Bíblia Livre (aplicativo)": "Bíblia Livre (application)",
+ "O aplicativo converteu arquivos USFM em dados JSON offline, removendo marcações técnicas; os titulares não endossam o Medite.": "The application converted USFM files into offline JSON data, removing technical formatting markers; the copyright holders do not endorse Medite.",
+ "pendente: cotejo editorial final do texto convertido": "pending: final editorial comparison of the converted text",
+ "King James Version (aplicativo)": "King James Version (application)",
+ "convertida de USFM para consulta offline. Condições de domínio público variam por jurisdição, com ressalvas no Reino Unido.": "converted from USFM for offline reading. Public-domain status varies by jurisdiction, with restrictions in the United Kingdom.",
+ "pendente: confirmação do alcance territorial da distribuição": "pending: confirmation of territorial distribution rights",
+ "Fontes Figtree, Newsreader e Inter": "Figtree, Newsreader, and Inter fonts",
+ "no site; licenças das três fontes acompanham também o pacote do aplicativo.": "on this site; licenses for all three fonts are also bundled with the application.",
+ "Gerador de QR Code": "QR code generator",
+ "Nome e identidade Medite": "Medite name and identity",
+ "Identificação em uso no projeto; não há declaração de registro de marca ou exclusividade. Busca preliminar no INPI indicou terceiros com sinais relacionados, sem conclusão sobre conflito na classe 9.": "Project identification; no claim of registered trademark or exclusivity. A preliminary INPI search identified third-party related marks, without a conclusive assessment of conflicts in class 9.",
+ "pendente: verificação jurídica direcionada se houver exploração comercial ou registro de marca": "pending: focused legal review if pursuing commercial use or trademark registration"
+});
 function clean(s){return String(s).replace(/\s+/g,' ').trim()}
 var translated=document.createElement('textarea');
 function textTranslate(t){
@@ -239,7 +284,7 @@ if(window.MEDITE_DATA&&Array.isArray(window.MEDITE_DATA.verses)){
 }
 
 translate(document.body);
-document.title='Medite — A moment with God, even on your busiest days';
+document.title=location.pathname.endsWith('/legal.html')?'Medite — Privacy, terms, and credits (draft)':'Medite — A moment with God, even on your busiest days';
 document.querySelector('meta[name="description"]')?.setAttribute('content','Medite is a free Christian app for Windows with offline Scripture, gentle reminders, and private notes.');
 document.querySelector('meta[property="og:locale"]')?.setAttribute('content','en_US');
 document.querySelector('meta[property="og:title"]')?.setAttribute('content','Medite — A moment with God');
