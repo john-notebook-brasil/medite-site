@@ -11,6 +11,11 @@ window.MEDITE_SITE_CONFIG = {
   download: {
     aprovado: false,
     versao: '0.3.0',
+    /* Pacotes distintos por idioma. Ficam bloqueados ate existir EXE homologado e SHA verificado. */
+    locales: {
+      pt: { aprovado: false, url: '', sha256: '', tamanho: '' },
+      en: { aprovado: false, url: '', sha256: '', tamanho: '' }
+    },
     url: '',
     sha256: '',
     tamanho: '9,35 MiB',
