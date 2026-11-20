@@ -33,3 +33,31 @@ Depois de aprovado e publicado o EXE exato no repositório público separado, co
 A página permanece em português na primeira publicação; traduzir o site para inglês em etapa posterior.
 
 **Nenhuma implementação aqui ativa o botão ou realiza publicação.**
+
+
+## Solicitação atualizada do proprietário — 20/11/2026: publicação PT-BR e EN-US
+
+O proprietário solicitou **concluir o pacote, hospedar o instalador, habilitar o download e tornar o site bilíngue**, com botões 🇧🇷/🇺🇸 no cabeçalho. A instrução supera a ordem anterior de deixar inglês para depois. Ela **não dispensa** prova da integridade do EXE final, licenças/direitos de terceiros e preservação de dados, nem autoriza inventar links ou hashes.
+
+### Preparado nesta branch isolada
+- `index.html` e `legal.html`: seletores 🇧🇷 PT / 🇺🇸 EN, inclusive no celular.
+- `assets/js/i18n.js`: tradução local estática dos textos do site e da página legal; idioma explícito por `?lang=pt`/`?lang=en` e preferência do visitante; 30 passagens de demonstração em inglês rotuladas como **paráfrases**, não KJV.
+- `assets/js/download.js`: exige aprovação global + autorização de idioma, URL exata de release, nome de EXE contendo `pt-BR` ou `en-US` e SHA-256 válido. Sem essas provas **permanece desabilitado por padrão**.
+- `assets/js/config.js`: `download.locales.pt` e `.en` vazios e `aprovado:false`, deliberadamente sem apontar para binário inexistente.
+- `baixar/index.html`: encaminha preservando escolha PT/EN.
+- **Verificação de comportamento em executor isolado (JavaScript):** 5 cenários de download testados — bloqueia quando falta aprovação global, aprovação local ou nome correto; habilita a simulação apenas com metadados completos para ambos os idiomas. **Não é teste em browser real.**
+- Sintaxe JavaScript de `i18n.js` e `download.js`: conferida sem erro por compilação sintática. QA visual/responsivo no navegador ainda pendente.
+
+### Aplicativo — preparação em branch isolada distinta
+- Branch privada `medite-app/docs/medite-030-prelancamento-g6-20261120`: `src/services/schedule.ts` aceita `VITE_MEDITE_DEFAULT_LANGUAGE=en` para instalação inicial EN/KJV e mantém PT/BLIVRE como padrão para a variante BR. Preferências já salvas têm prioridade.
+- `qa/release/build-pt-en-unsigned.ps1`: preparação de **duas compilações Windows** com fontes USFM autenticadas e saída `Medite-0.3.0-pt-BR-unsigned.exe` e `Medite-0.3.0-en-US-unsigned.exe`, hashes individuais. **NÃO EXECUTADO**, nenhuma instalação.
+- Isto não altera nome oficial, conta, fluxo de PIX nem o código público do produto por merge.
+
+### Bloqueios que impedem ativar o botão agora
+1. Ainda **não existe um binário 0.3.0 pós-correção da BLIVRE** produzido e auditado nesta sessão; o instalador anterior identificado por SHA `9a1579f2...` foi gerado **antes** da correção do importador e não pode ser apresentado como a nova candidata.
+2. O repositório público de hospedagem separado `john-notebook-brasil/medite-downloads` retornou **404 / não encontrado** no GitHub consultado. Não existe URL de release confirmada nem ferramenta nesta sessão capaz de criar e enviar o instalador Windows real.
+3. Falta cotejo integral BLIVRE, tratamento de restrição KJV no Reino Unido, procedência dos ativos e validação final da marca; créditos existentes não resolvem todos esses itens.
+4. Teste de compilação Windows e verificação de integridade para **cada variante PT-BR/EN-US**, com mesmos requisitos de preservação, ainda pendentes. GitHub Actions esgotado; utilizar ambiente Windows isolado sem custo.
+5. Não executar instalação do pacote normal na máquina do usuário sem autorização de ambiente e backups. A autorização de publicação solicitada será aplicável **somente depois** de identificado e comprovado o binário exato; não realizar publicação parcial que induza download inexistente.
+
+**Resultado nesta fase:** site bilíngue e mecanismos de download preparados **em branch**, ainda sem merge/deploy; nenhum arquivo EXE hospedado e nenhum botão público ativado. Manter mudanças financeiras intactas e exigir evidências antes da liberação.
