@@ -223,3 +223,15 @@ p{margin:0 0 1em}
 .hero-app-orb{position:absolute;right:12px;bottom:8px;border-radius:50%;padding:4px;background:var(--gold-ring);box-shadow:0 3px 9px #0005}
 .hero-app-orb img{width:65px;height:65px;border-radius:50%}
 @media(max-width:600px){.hero-app-preview{padding:8px;gap:2px;min-height:190px}.hero-app-top{padding:5px;font-size:8px}.hero-app-tiny img{width:18px;height:18px}.hero-app-ref{padding:6px 6px 0;font-size:7px}.hero-app-ref small{display:none}.hero-app-verse{padding:5px 6px 0;font-size:clamp(10px,3vw,17px)}.hero-app-italic{font-size:9px;padding:4px 6px}.hero-app-bottom span{font-size:7px;padding:6px 1px}.hero-app-tabs{padding-top:8px}.hero-app-tabs span{font-size:7px;padding:6px 0}.hero-app-side-top{padding:6px;font-size:9px}.hero-app-side-top small{display:none}.hero-app-side-body{padding:6px;font-size:8px}.hero-app-side-body strong,.hero-app-side-body p{font-size:8px}.hero-app-side-body>span{font-size:7px;padding:5px}.hero-app-orb img{width:35px;height:35px}.hero-app-orb{padding:2px;right:5px;bottom:4px}}
+
+
+/* Locale selector — intentionally compact, always accessible on desktop and mobile. */
+.site-languages{display:flex;align-items:center;gap:4px;margin-left:10px;flex-shrink:0}
+.site-language{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:54px;min-height:36px;
+ padding:5px 8px;border:1px solid transparent;border-radius:999px;font-size:14px;font-weight:700;
+ color:var(--ink2);text-decoration:none;line-height:1.2}
+.site-language:hover,.site-language:focus-visible{background:var(--green-soft)}
+.site-language.active,.site-language[aria-current="true"]{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+.site-language span{font-size:11px;letter-spacing:.02em}
+@media(max-width:880px){.site-languages{margin-left:auto;margin-right:8px}.site-language{min-width:48px;padding:5px}}
+@media(max-width:430px){.site-languages{gap:0}.site-language{min-width:42px;padding:4px}.site-language span{font-size:10px}}
