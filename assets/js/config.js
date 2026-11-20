@@ -4,6 +4,19 @@ window.MEDITE_SITE_CONFIG = {
   /* true = prévia privada (faixa de aviso + noindex). Mudar para false SOMENTE na publicação aprovada. */
   preview: false,
 
+  /* Download somente depois de aprovação G6, hospedagem do EXE e conferência pública do SHA-256.
+   * O código do app continua privado; o download deve ficar em outro repositório público.
+   * NUNCA usar o arquivo local do Windows como URL.
+   */
+  download: {
+    aprovado: false,
+    versao: '0.3.0',
+    url: '',
+    sha256: '',
+    tamanho: '9,35 MiB',
+    avisoAssinatura: 'Instalador ainda não assinado digitalmente. O Windows pode apresentar um alerta de segurança.'
+  },
+
   /* Gravação real do Medite F2 no Windows (MP4 H.264, ~45–60 s). Vazio = aguardando captura. */
   video: {
     src: '',                       // ex.: 'assets/video/medite-f2-demo.mp4'
