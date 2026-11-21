@@ -257,6 +257,12 @@
    <p class="fine" id="dl-note">O instalador ainda não está disponível para download público.</p>
    <p class="fine" id="medite-download-checksum" hidden></p>
    <p class="fine" id="medite-download-warning" hidden></p>
+   <details class="dl-help" style="margin-top:14px">
+    <summary>Como verificar um download seguro</summary>
+    <p>O Medite exige Windows 10 ou 11 de 64 bits. A primeira instalação pode solicitar o Microsoft WebView2. O instalador inicial não terá assinatura digital, e o Windows poderá mostrar um aviso SmartScreen.</p>
+    <p>Antes de executar, confira o endereço oficial do download e o SHA-256 exibido acima. No PowerShell, use <code>Get-FileHash .\arquivo.exe -Algorithm SHA256</code>, substituindo pelo nome do arquivo baixado. O resultado deve ser idêntico ao informado no site. Não ignore avisos se a origem ou o hash não corresponderem.</p>
+    <p>Em caso de dúvida, não execute o arquivo e entre em contato com o suporte.</p>
+   </details>
   </div>
  </div>
 </section>
