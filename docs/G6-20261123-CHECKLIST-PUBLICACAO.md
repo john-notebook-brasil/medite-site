@@ -39,3 +39,12 @@ Site privado: PR #7 (base main) e PR #8 (base PR #7), ambas drafts. PR #8 conté
 A autorização G6 do proprietário foi explícita. **Não houve merge, criação de release, transferência de binários nem ativação de links**, pois os arquivos estão apenas no computador local e as condições 1–6 não estão comprovadamente encerradas. Não utilizar repositório principal privado para hospedar instaladores públicos; não alterar Pix nem credenciais. GitHub Actions da SHA PR99 apresentou falhas sem steps e logs inacessíveis; a causa específica é não confirmada e não substitui evidências locais.
 
 **Próxima dependência real:** acesso aos dois executáveis exatos e conclusão documental/segurança restante. Nenhuma publicação parcial ou botão apontando para arquivo inexistente.
+
+
+## Revisão focal — 23/11/2026, execução da preparação
+- Na `legal.html`, substituídas as alegações antigas de cotejo BLIVRE e WEB pendente pelos resultados de comparação já documentados em 21/11/2026; deixou-se clara a diferença entre equivalência técnica da conversão e revisão pastoral/editorial. Ajustado o texto correspondente no inglês em `assets/js/i18n.js`. Não foram criadas novas traduções ou alterados dados bíblicos.
+- Fonte primária WEB `https://ebible.org/details.php?id=engwebp`: edição engwebp em domínio público, com nome World English Bible como marca do eBible.org; licença da tradução inglesa não é o bloqueio territorial histórico da KJV.
+- INPI: busca prévia de marcas é recomendada (FAQ oficial `https://www.gov.br/inpi/pt-br/acesso-a-informacao/perguntas-frequentes/marcas`), mas não foi recuperada lista completa por classe/processo para MEDITE; sem conclusão de registrabilidade ou ausência de oposição.
+- `legal.html` ainda tem rótulo de proposta, condições de licença do software e procedência artística a verificar: **não se declarou o encerramento jurídico**.
+- Os dois EXEs do release privado em draft tiveram SHA256 conferido após download pelo proprietário; isso não autoriza publicação ignorando itens ainda em aberto.
+- **Downloads ainda bloqueados**: config `aprovado:false`, ambas URLs vazias; nenhuma PR integrada ou release publicada.
