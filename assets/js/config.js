@@ -13,8 +13,8 @@ window.MEDITE_SITE_CONFIG = {
     versao: '0.3.0',
     /* Pacotes distintos por idioma. Ficam bloqueados ate existir EXE homologado e SHA verificado. */
     locales: {
-      pt: { aprovado: false, url: '', sha256: '', tamanho: '' },
-      en: { aprovado: false, url: '', sha256: '', tamanho: '' }
+      pt: { aprovado: false, url: '', sha256: 'cf4522cc398f076dabbd1c95aa73fc911ed4723896d31e0b1fb27f38c7ca42c5', tamanho: '9,35 MiB' },
+      en: { aprovado: false, url: '', sha256: '2f00b1985690fab48890800e3425aedfd57f4d64be61a4acd99442f374551b72', tamanho: '9,35 MiB' }
     },
     url: '',
     sha256: '',
