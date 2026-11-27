@@ -9,10 +9,10 @@
  var lang=selected==='en'?'en':selected==='pt'?'pt':null;
  if(!lang){try{lang=localStorage.getItem('medite.site.language')==='en'?'en':'pt'}catch(_){lang='pt'}}
  var locale=cfg&&cfg.locales&&cfg.locales[lang];
- var prefix='https://github.com/john-notebook-brasil/medite-downloads/releases/download/v0.3.0/';
+ var prefix='https://github.com/john-notebook-brasil/medite-downloads/releases/download/v0.3.1/';
  var filename=lang==='en'?/^[A-Za-z0-9._-]*en-US[A-Za-z0-9._-]*\.exe$/i:/^[A-Za-z0-9._-]*pt-BR[A-Za-z0-9._-]*\.exe$/i;
- var valid=!!(cfg&&cfg.aprovado===true&&cfg.versao==='0.3.0'&&locale&&locale.aprovado===true&&
-  typeof locale.url==='string'&&locale.url.startsWith(prefix)&&filename.test(locale.url.slice(prefix.length))&&
+ var valid=!!(cfg&&cfg.aprovado===true&&cfg.versao==='0.3.1'&&locale&&locale.aprovado===true&&
+  typeof locale.url==='string'&&locale.url.startsWith(prefix)&&filename.test(locale.url.slice(prefix.length))&&locale.url===prefix+'Medite-0.3.1-'+(lang==='en'?'en-US':'pt-BR')+'-unsigned.exe'&&
   /^[a-f0-9]{64}$/i.test(locale.sha256||''));
  if(!valid)return;
  var a=document.createElement('a');

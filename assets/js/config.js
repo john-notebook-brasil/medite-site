@@ -9,12 +9,12 @@ window.MEDITE_SITE_CONFIG = {
    * NUNCA usar o arquivo local do Windows como URL.
    */
   download: {
-    aprovado: true,
-    versao: '0.3.0',
+    aprovado: false,
+    versao: '0.3.1',
     /* Pacotes distintos por idioma. Ficam bloqueados ate existir EXE homologado e SHA verificado. */
     locales: {
-      pt: { aprovado: true, url: 'https://github.com/john-notebook-brasil/medite-downloads/releases/download/v0.3.0/Medite-0.3.0-pt-BR-unsigned.exe', sha256: 'cf4522cc398f076dabbd1c95aa73fc911ed4723896d31e0b1fb27f38c7ca42c5', tamanho: '9,35 MiB' },
-      en: { aprovado: true, url: 'https://github.com/john-notebook-brasil/medite-downloads/releases/download/v0.3.0/Medite-0.3.0-en-US-unsigned.exe', sha256: '2f00b1985690fab48890800e3425aedfd57f4d64be61a4acd99442f374551b72', tamanho: '9,35 MiB' }
+      pt: { aprovado: false, url: 'https://github.com/john-notebook-brasil/medite-downloads/releases/download/v0.3.1/Medite-0.3.1-pt-BR-unsigned.exe', sha256: '02027551311defbbf032e73619cab40fe83b20256e233aadc502bd877dd2ad7c', tamanho: '9,35 MiB' },
+      en: { aprovado: false, url: 'https://github.com/john-notebook-brasil/medite-downloads/releases/download/v0.3.1/Medite-0.3.1-en-US-unsigned.exe', sha256: 'ad62176dca9554f91c4b9486a161296f409242a516170cc0f93d4870e3d1beee', tamanho: '9,35 MiB' }
     },
     url: '',
     sha256: '',
