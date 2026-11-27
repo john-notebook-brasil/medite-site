@@ -294,6 +294,7 @@ if(window.MEDITE_DATA&&Array.isArray(window.MEDITE_DATA.verses)){
  window.MEDITE_DATA.verses.forEach(function(v){if(demoVerses[v.id]){v.text=demoVerses[v.id];v.book=translations[v.book]||v.book}});
 }
 
+Object.assign(translations,{"O Medite é gratuito para Windows, em português e inglês, sem cadastro e sem publicidade. A versão 0.3.1 está em preparação para distribuição.":"Medite is free for Windows, in Portuguese and English, without registration or advertising. Version 0.3.1 is being prepared for distribution.","Configure quando o Medite reaparece e desaparece, pause os lembretes e escolha o idioma de leitura. As preferências ficam no seu computador.":"Choose when Medite reappears and disappears, pause reminders, and select your reading language. Preferences remain on your computer.","Novidades da versão 0.3.1: versículos aleatórios sem repetição durante cada ciclo, avatar que aguarda a primeira leitura e temporizador que respeita seu tempo de meditação.":"What's new in version 0.3.1: random Bible verses without repeats within each cycle, an avatar that waits for your first reading, and a timer that respects your meditation time."});
 translate(document.body);
 document.title=location.pathname.endsWith('/legal.html')?'Medite — Privacy, terms, and credits (draft)':'Medite — A moment with God, even on your busiest days';
 document.querySelector('meta[name="description"]')?.setAttribute('content','Medite is a free Christian app for Windows with offline Scripture, gentle reminders, and private notes.');
